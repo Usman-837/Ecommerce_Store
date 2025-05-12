@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import authRouter from './routes/auth/auth-routes';
 
 mongoose.connect('mongodb+srv://usmantufail837:Brainiacs827@cluster0.h7qmnjk.mongodb.net/')
 .then(() => console.log('✅ MongoDB connected'))
@@ -28,5 +29,6 @@ app.use(
 
 app.use(cookieParser());
 app.use(express.json());
+app.use('/api/auth', authRouter)
 
 app.listen(PORT, () => console.log(`🚀 Server is now running on port ${PORT}`));
